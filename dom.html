@@ -17,16 +17,18 @@
 		link.textContent = 'Mozilla Developer Network';
 		link.href = 'https://developer.mozilla.org';
 		
-		//const sect = document.querySelector('section');
-		//const para = document.createElement('p');
-		//para.textContent = 'We hope you enjoyed the ride.';
-		//sect.appendChild(para);
+		const sect = document.querySelector('section');
+		const para = document.createElement('p');
+		para.textContent = 'We hope you enjoyed the ride.';
+		sect.appendChild(para);
 		
-	   //const text = document.createTextNode(' - some words');
-	   //const linkPara = document.querySelector('p');
+	   const text = document.createTextNode(' - some words');
+	   const linkPara = document.querySelector('p');
 	   linkPara.appendChild(text);
-	   //sect.appendChild(linkPara);
-	   //sect.removeChild(linkPara);
+	   
 	  </script>
   </body>
 </html>
+
+sect.appendChild(linkPara);
+	   sect.removeChild(linkPara);

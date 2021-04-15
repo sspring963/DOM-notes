@@ -1,9 +1,6 @@
 ﻿
 # Document Object Model
 
-  
-  
-
 ## DOM Structure
 
 The DOM utilizes the Document object to manage HTML and styling information
@@ -62,11 +59,10 @@ DOM uses the:
 To manipulate elements in DOM we need to select it and store a reference to it in a variable.
 There are several ways to select an element and store it in a variable.
     
--   Document.querySelector() - modern approach and is convenient because it allows you to select elements using CSS selectors
-    
+-   Document.querySelector() - modern approach and is convenient because it allows you to select elements using CSS selectors like "#id", ".class", "p.intro"
 	-   Returns first element or null
     
-
+	- https://www.w3schools.com/cssref/css_selectors.asp  
 	-   Example:
     
 -   ![](https://lh4.googleusercontent.com/HHlbZxVCpaWn9Jvokazw0lIjXYDEyFJeX3JG9-DDtUIZwhZxVo7iD6XaaRJ9tGZleQiiJmxISJ4o3DWNKG5ZZUvqqplL0B3SGQ-t7nMfvQOe5_DeOYzUokF_f9-RnUbaGVLdesku)
@@ -85,7 +81,7 @@ There are several ways to select an element and store it in a variable.
 
 -   Document.querySelectorAll() - matches every element in the document that matches the selector and references to them to a NodeList, NodeList will be null if no matches
     
- >  const matches = document.querySelectorAll("p");
+ 	>  const matches = document.querySelectorAll("p");
     
 -   Returns all the < p > elements in the document
     
@@ -96,7 +92,7 @@ There are several ways to select an element and store it in a variable.
     
 
 	>  < p id="myId">My paragraph< /p >
-               const elementRef = document.getElementById('myId')
+    > const elementRef = document.getElementById('myId')
     
 
 -   Document.getElementsByTagName() - returns an array-like object containing all the elements on the page of a given type like < p > or < a >
@@ -108,20 +104,32 @@ There are several ways to select an element and store it in a variable.
 -   We can create and append new nodes to existing ones
     
 -   This selects element, “section”, and appends a created text node to it
-    
-
-> const sect = document.querySelector('section');
-   const para = document.createElement('p');
-   para.textContent = 'We hope you enjoyed the ride.';
-   sect.appendChild(para);
-
 -   This selects element “p”, and also appends a text node to it
     
+```
+ <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
 
-> const text = document.createTextNode(' - some words');
-> const linkPara = document.querySelector('p');
-> linkPara.appendChild(text);
-
+	  <script>
+		const link = document.querySelector('a');
+		link.textContent = 'Mozilla Developer Network';
+		link.href = 'https://developer.mozilla.org';
+		
+		const sect = document.querySelector('section');
+		const para = document.createElement('p');
+		para.textContent = 'We hope you enjoyed the ride.';
+		sect.appendChild(para);
+		
+	   const text = document.createTextNode(' - some words');
+	   const linkPara = document.querySelector('p');
+	   linkPara.appendChild(text);
+	   
+	  </script>
+  </body>
+```
 -   ![](https://lh4.googleusercontent.com/hPP3j1I9MI9vhlAh_rJ9fuXaTEDpz8NWkb1MIBGLtg8rDtmJbCblqMaenvu4q30EA5mZy1BYPriiXg0Q6FzU6Zi3gMo-smLYcX6SORqcADO-8uOOZ-nEXhxjnnXKFVUI1hw0fdxh)
     
 -   ![](https://lh4.googleusercontent.com/ERYz6QfcxjkWoBNHJKBbMtLJSoX2Fxtma3wyZxl6O99_IvvRi7HTNIreP6tRsxJh363kQVkqEeqnERVRhNQKGb1ntDCpDTFxTt5oLU6GFY2GXZz35g_l1Dr5BHyyZmHgleTElQ06)
@@ -136,10 +144,33 @@ There are several ways to select an element and store it in a variable.
 -   To move a node, is Node.appendChild()
     
 -   This appends element ‘p’ to ‘sections' , moving it to the bottom of the screen
+	> sect.appendChild(linkPara);
     
+```
+<body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
 
-> sect.appendChild(linkPara);
-
+	  <script>
+		const link = document.querySelector('a');
+		link.textContent = 'Mozilla Developer Network';
+		link.href = 'https://developer.mozilla.org';
+		
+		const sect = document.querySelector('section');
+		const para = document.createElement('p');
+		para.textContent = 'We hope you enjoyed the ride.';
+		sect.appendChild(para);
+		
+	   const text = document.createTextNode(' - some words');
+	   const linkPara = document.querySelector('p');
+	   linkPara.appendChild(text);
+	   sect.appendChild(linkPara);
+	   
+	  </script>
+  </body>
+```
 -   ![](https://lh3.googleusercontent.com/NBNWlq0-75NyKdI5XbbhHlxByBG0YpcXUY8ffsLkYf6v2-nqAPVSkedv9sCIOVK0wSPYYWCC9XyWmXkiD4xxvWTap31Sp0Nr3kozWFJIe6Bqf7Od_DrWYAOlLKCbNzM1DXG3LXx4)
     
 
@@ -171,12 +202,12 @@ Three ways to add event handlers for a DOM element:
 -   EventTarget.addEventListener
 	 -   This is the way to use in modern web pages
   
-
-> myButton.addEventListener(‘click’, greet, false)
+```
+ myButton.addEventListener(‘click’, greet, false)
    Function greet(event) {
    console.log(‘greet:’, arguments)
    alert(‘hello world’) }
-
+```
 
 
 -   HTML attribute
@@ -193,9 +224,12 @@ Three ways to add event handlers for a DOM element:
     
 	-   Only one handler can be set per element and per event.
     
-
-> myButton.onclick = function(event){alert(‘Hello world’)}
-
+```
+ myButton.onclick = function(event)
+	{
+		alert(‘Hello world’)
+	}
+```
 
     
 
