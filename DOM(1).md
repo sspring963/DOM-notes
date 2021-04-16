@@ -5,9 +5,11 @@
 
 When writing web pages and apps, we manipulate the document structure using the DOM.
 
-The DOM utilizes the Document object to manage HTML and styling information
+The DOM is a set of APIs for controlling HTML and styling information.
 
-The document in each browser is represented by a document object model
+The DOM utilizes the Document object to manage HTML and styling information.
+
+The document in each browser is represented by a document object model.
 
 DOM uses the:
 
